@@ -1,17 +1,41 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDom from "react-dom";
+import "./index.css";
+import image1 from "./images/image (1).jpg";
+import image2 from "./images/image (2).jpg";
+import image3 from "./images/image (3).jpg";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+//adding props
+const Person = ({ img, name, job, children}) => {
+  // using template litrals
+  //const url = `https://randomuser.me/api/portraits/thumb/men/${img}.jpg`;
+  return (
+    <article className="person">
+   { /* <img src={url}></img> */}
+      <h4>{name}</h4>
+      <h4>{job}</h4>
+      {children}
+    </article>
+  );
+};
+  
+// now to create a component
+const PersonList = () => {
+  return (
+    <section className="person-list">
+      <Person img="34" name="SirCal" job="Web developer"><img src={image1}></img></Person>
+      <Person img="56" name="Dziedzorm" job="Creative Director"><img src={image2} ></img></Person>
+      <Person img="31" name="PMK" job="UX Designer"><img src={image3} ></img>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+      </Person>
+    </section>
+  );
+}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+
+
+ReactDom.render(<PersonList></PersonList>, document.getElementById("root"));
+
